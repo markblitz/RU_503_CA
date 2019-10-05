@@ -22,13 +22,18 @@ int main() {
 	// ask input and comfirm with users
 	cout << "You are using this program for the result of " << poll_size << " polls to 5 candidates. \n";
 	cout << "Please enter integer 0 to 4 to represent each candidate for every single poll result, one at a time by using enter key. \n";
+	
+	// ask input of 20 array elements one by one
+	// fits the real life better I believe
 	while(true) {
 		cout << "Your " << input_counter + 1 << " poll result is: \n";
 		cin >> input_temp;
-		if ((input_temp <= 4) && (input_temp >= 0)) {
+		if ((input_temp <= 4) && (input_temp >= 0)) {	
+			// check if the input fits interval [0,4]
 			poll[input_counter] = input_temp;
 			input_counter += 1;
-			if (input_counter >= poll_size) {
+			if (input_counter >= poll_size) {	
+				// after fill 20 elements in array, comfirm with user
 				cout << "You already entered all " << poll_size << " results, they are:";
 				print_array(poll, poll_size);
 				cout << "\nTo re-enter, enter 1; otherwise enter any key: ";
@@ -47,11 +52,13 @@ int main() {
 	// find mode and the result of poll
 	winner = poll_winner(poll, poll_size);
 
+	// give output
 	cout << "Winner is the candidate represented by number: " << winner << " ! \n";
 
 	return 0;
 }
 
+// print the array, 5 elements in one line
 void print_array(const int a[], int s) {
 	for (int i = 0; i < s; i++) {
 		if (i % 5 == 0) {
@@ -61,6 +68,7 @@ void print_array(const int a[], int s) {
 	}
 }
 
+// find mode by using another array to store the frequency
 int poll_winner(const int a[], int s) {
 	int winner = 0;
 	int largest = 0;
@@ -70,6 +78,7 @@ int poll_winner(const int a[], int s) {
 		poll_counter[a[i]] += 1;
 	}
 
+	// mode is the index with maximun frequency
 	for (int rate = 0; rate < 5; rate++) {
 		if (poll_counter[rate] > largest) {
 			largest = poll_counter[rate];
