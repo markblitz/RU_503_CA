@@ -52,6 +52,11 @@ int main() {
 	// find mode and the result of poll
 	winner = poll_winner(poll, poll_size);
 
+	if (winner == 0) {
+		cout << "There is no winner!\n";
+		return 0;
+	}
+
 	// give output
 	cout << "Winner is the candidate represented by number: " << winner << " ! \n";
 
@@ -83,6 +88,13 @@ int poll_winner(const int a[], int s) {
 		if (poll_counter[rate] > largest) {
 			largest = poll_counter[rate];
 			winner = rate;
+		}
+	}
+
+	// need to check if there are more than one winner... accroding to the insrtuction
+	for (int rate = 0; rate < 5; rate++) {
+		if (poll_counter[rate] == largest) {
+			winner = 0;
 		}
 	}
 

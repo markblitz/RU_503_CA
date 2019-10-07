@@ -5,9 +5,9 @@
 
 using namespace std;
 
-int countBinStr(const int& n);
+long countBinStr(const int& n);
 
-int countBinStr(const int& n)
+long countBinStr(const int& n)
 {
 	// if there is only one bit, there will be two possible strings "0" and "1"
 	if (n == 1) {
